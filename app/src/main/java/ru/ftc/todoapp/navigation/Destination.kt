@@ -8,5 +8,9 @@ sealed class Destination {
 
     object NewTask : Destination()
 
+    object TaskList : Destination()
+
+    object Login : Destination()
+
     data class EditTask(val task: Task) : Destination()
 }

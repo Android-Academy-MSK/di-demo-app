@@ -1,5 +1,6 @@
 package ru.ftc.todoapp.feature.task.presentation
 
+import ru.ftc.todoapp.feature.login.domain.LogoutUseCase
 import ru.ftc.todoapp.feature.task.domain.DeleteTaskUseCase
 import ru.ftc.todoapp.feature.task.domain.GetTasksUseCase
 import ru.ftc.todoapp.feature.task.domain.entity.Task
@@ -14,11 +15,14 @@ abstract class TaskListPresenter: Presenter<TaskListView>() {
     abstract fun onTaskClick(task: Task)
 
     abstract fun onTaskSwipe(task: Task)
+
+    abstract fun exit()
 }
 
 class TaskListPresenterImpl(
     private val getTasksUseCase: GetTasksUseCase,
     private val deleteTaskUseCase: DeleteTaskUseCase,
+    private val logoutUseCase: LogoutUseCase,
     private val router: Router
 ): TaskListPresenter() {
 
@@ -37,5 +41,10 @@ class TaskListPresenterImpl(
 
     override fun onTaskSwipe(task: Task) {
         deleteTaskUseCase(task)
+    }
+
+    override fun exit() {
+        logoutUseCase()
+        router.goto(Destination.Login)
     }
 }

@@ -1,9 +1,7 @@
 package ru.ftc.todoapp.feature.task.ui
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
 import kotlinx.android.synthetic.main.fragment_task_list.*
@@ -33,15 +31,21 @@ class TaskListFragment : Fragment(), TaskListView {
         super.onViewCreated(view, savedInstanceState)
 
         toolbar.title = getString(R.string.app_name)
+        toolbar.inflateMenu(R.menu.menu_task_list)
 
         presenter = TaskListPresenterImpl(
             getTasksUseCase = App.getTasksUseCase,
             deleteTaskUseCase = App.deleteTaskUseCase,
-            router = requireActivity() as Router
+            logoutUseCase = App.logoutUseCase,
+            router = App.router
         )
         presenter.attachView(this)
 
         task_create.setOnClickListener { presenter.onAddClick() }
+        toolbar.setOnMenuItemClickListener {
+            presenter.exit()
+            true
+        }
     }
 
     override fun onDestroyView() {

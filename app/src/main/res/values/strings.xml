@@ -2,4 +2,10 @@
     <string name="app_name">TodoApp</string>
     <string name="edit_task">Edit task</string>
     <string name="task_save">Save</string>
+    <string name="login">Log in</string>
+    <string name="login_name">Name</string>
+    <string name="login_password">Password</string>
+    <string name="login_error">Check name and password</string>
+    <string name="login_enter">Enter</string>
+    <string name="login_exit">Exit</string>
 </resources>

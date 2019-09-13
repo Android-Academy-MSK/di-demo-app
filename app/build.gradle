@@ -33,4 +33,6 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
     implementation "com.google.android.material:material:$materialVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintVersion"
+
+    implementation "com.google.code.gson:gson:$gsonVersion"
 }

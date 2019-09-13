@@ -46,7 +46,7 @@ class TaskFragment : Fragment(), TaskView {
         presenter = TaskPresenterImpl(
             createTaskUseCase = App.createTaskUseCase,
             updateTaskUseCase = App.updateTaskUseCase,
-            router = requireActivity() as Router,
+            router = App.router,
             task = arguments?.task
         )
         presenter.attachView(this)
